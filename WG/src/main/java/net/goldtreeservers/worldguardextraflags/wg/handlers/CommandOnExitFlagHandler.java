@@ -69,21 +69,18 @@ public class CommandOnExitFlagHandler extends Handler
 
 		this.lastCommands = commands;
 
-//		if (!this.getSession().getManager().hasBypass(player, (World) to.getExtent()))
-//		{
-			for (Set<String> commands_ : lastCommands)
+		for (Set<String> commands_ : lastCommands)
+		{
+			if (!commands.contains(commands_) && commands_.size() > 0)
 			{
-				if (!commands.contains(commands_) && commands_.size() > 0)
+				for (String command : commands_)
 				{
-					for (String command : commands_)
-					{
-						Bukkit.getServer().dispatchCommand(((BukkitPlayer) player).getPlayer(), command.substring(1).replace("%username%", player.getName())); //TODO: Make this better
-					}
-
-					break;
+					Bukkit.getServer().dispatchCommand(((BukkitPlayer) player).getPlayer(), command.substring(1).replace("%username%", player.getName())); //TODO: Make this better
 				}
+
+				break;
 			}
-//		}
+		}
 		
 		return true;
 	}
