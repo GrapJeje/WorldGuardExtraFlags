@@ -69,8 +69,8 @@ public class CommandOnExitFlagHandler extends Handler
 
 		this.lastCommands = commands;
 
-		if (!this.getSession().getManager().hasBypass(player, (World) to.getExtent()))
-		{
+//		if (!this.getSession().getManager().hasBypass(player, (World) to.getExtent()))
+//		{
 			for (Set<String> commands_ : lastCommands)
 			{
 				if (!commands.contains(commands_) && commands_.size() > 0)
@@ -83,7 +83,7 @@ public class CommandOnExitFlagHandler extends Handler
 					break;
 				}
 			}
-		}
+//		}
 		
 		return true;
 	}
